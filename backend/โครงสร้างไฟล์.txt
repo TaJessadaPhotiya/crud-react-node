@@ -1,0 +1,23 @@
+node/
+├── config/
+│   └── db.js
+├── controllers/
+│   └── productController.js
+├── middleware/
+│   └── uploadMiddleware.js
+├── models/
+│   └── Product.js
+├── routes/
+│   └── productRoutes.js
+├── public/ 
+|   └── images/  (สำหรับเก็บรูปภาพ)
+├── index.js
+└── .env
+
+
+
+
+ติดตั้ง Packket 
+
+npm install express sequelize mysql2 multer cors dotenv
+
