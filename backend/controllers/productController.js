@@ -81,13 +81,7 @@ exports.updateProduct = async (req, res) => {
     // ลบไฟล์รูปภาพเก่าหากมีการอัปเดตไฟล์ใหม่
     if (image && product.image) {
       const oldImagePath = path.join(__dirname, "../public/uploads/", product.image);
-      try {
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath);
-        }
-      } catch (err) {
-        console.error("Failed to delete old image:", err);
-      }
+      fs.existsSync(oldImagePath) && fs.unlinkSync(oldImagePath);
     }
 
     // อัปเดตข้อมูลสินค้า โดยใช้ค่าที่ส่งมา หรือค่าสินค้าเดิมหากไม่มีการส่งมา
@@ -119,12 +113,8 @@ exports.deleteProduct = async (req, res) => {
     }
 
     // ตรวจสอบว่ามีไฟล์รูปภาพที่เกี่ยวข้องหรือไม่
-    const imagePath = path.join(__dirname, "../public/uploads/", product.image); // สมมติว่า product มีฟิลด์ 'image'
-
-    if (fs.existsSync(imagePath)) {
-      // ลบไฟล์รูปภาพออกจากโฟลเดอร์
-      fs.unlinkSync(imagePath);
-    }
+    const imagePath = path.join(__dirname, "../public/uploads/", product.image);
+    fs.existsSync(imagePath) && fs.unlinkSync(imagePath);
 
     // ลบสินค้าจากฐานข้อมูล
     await product.destroy();
