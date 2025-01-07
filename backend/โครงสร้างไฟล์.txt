@@ -16,8 +16,8 @@ node/
 
 
 
-
 ติดตั้ง Packket 
 
 npm install express sequelize mysql2 multer cors dotenv
+npm install --save-dev nodemon
 
